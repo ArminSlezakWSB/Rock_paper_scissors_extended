@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl" id="html">
+<head>
+    <meta charset="UTF-8">
+    <title>papierek kamyczek i nożyczki</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+   <div class="plan" id="plan1">
+   <div class="spellCheckListContainer">  
+    <div class="spellCheckList"><img width="150" height="150"src="img/spelle/flame_2.png" alt="flame" id="spell1"></div>
+    <div class="spellCheckList"><img width="150" height="150" src="img/spelle/freeze.png" alt="freeze" id="spell2"></div>
+    <div class="spellCheckList"><img width="150" height="150"src="img/spelle/nature(n).webp" alt="nature" id="spell3"></div>
+    <div class="spellCheckList"><img width="150" height="150"src="img/spelle/wind.png" alt="wind" id="spell4"></div>
+    <div class="spellCheckList"><img width="150" height="150"src="img/spelle/thunder.png" alt="happy" id="spell5"></div>
+   </div>
+   <br>
+   <div class="YourChoosenSpells" id="p1"></div>
+   <div class="YourChoosenSpells" id="p2"></div>
+   <div class="YourChoosenSpells" id="p3"></div>
+   <div class="unconfirm" id="confirmButton">Confirm</div>
+    </div>
+    
+    
+    
+    
+    
+    <div  class="plan"id="plan2">
+    <div class="left side">
+    <div class="myself figures" id="myself">
+    <div class="spell MySpell AttackSpell">
+        
+    </div>
+    
+    <div class="spell MySpell AttackSpell">
+        
+    </div>
+    
+    <div class="spell MySpell AttackSpell">
+        
+    </div>
+    
+    
+    <div class="special_spell MySpell" id="MyShield"><img width="50" height="50"src="img/spelle/Shield.png" alt=" shield"></div><div class="special_spell MySpell" id="MliveSpell"><img width="50" height="50"src="img/spelle/lives.png" alt=" lives"></div>
+    </div>
+    
+    <div class="attackContainer MyAttack" id="MyAttack"></div>
+    
+    <div class="progress_container_left">
+    <div class="progressContainer">
+    <span class="actualstatus" id="mm">100</span>
+    <progress class="progress mana_progress" id="mymana" value="100" max="100"></progress>
+    </div>
+    
+    <div class="progressContainer">
+    <span class="actualstatus" id="ml">1000</span>
+    <progress class="progress live_progress" id="MyLive" value="1000" max="1000"></progress>
+        </div>
+        </div>
+    </div>
+    
+    <div id="vs"></div>
+    
+    <div class="right side">
+    <div class="my_enemy figures">
+        <div class="my_enemy_spell spell"></div>
+        <div class="my_enemy_spell spell"></div>
+        <div class="my_enemy_spell spell"></div>
+        
+        <div class="my_enemy_special_spell special_spell"><img width="50" height="50"src="img/spelle/Shield.png" alt=""></div><div class="my_enemy_special_spell special_spell"><img width="50" height="50"src="img/spelle/lives.png" alt=""></div>
+    </div>
+    
+    <div class="attackContainer EnemyAttack" id="EnemyAttack"></div>
+    
+    <div class="progress_container_right">
+    <div class="progressContainer">
+    <span class="actualstatus" id="em">100</span>
+    <progress class="progress mana_progress" id="enemyMana" value="100" max="100"></progress>
+    </div>
+    <div class="progressContainer">
+      <span class="actualstatus" id="el">1000</span>
+       <progress class="progress live_progress" id="enemyLive" value="1000" max="1000"></progress>
+       </div>
+        </div>
+    </div>
+    
+    </div>
+    <div  class="plan" id="plan3">
+    
+    <div class="thanksContainer">
+        <span class="thanks"><span class="result" id="result"></span></span> <br>
+        Dziękujemy za zagranie w wersję <span class="thanks">OpenBeta</span> naszej gry. <br>
+    <span class="thanks">Twórca :</span> Armin Ślęzak. <br>
+       Jeśli chcesz, aby gra była dalej rozwijana, możesz dobrowolnie przelać odpowiednie fundusze na nr konta : <span class="thanks">910 0000 2145 0014 7713</span> w tytule podając adres witryny
+       
+        </div>
+        <button class="Once_Again" id="oa">Jeszcze raz ?</button>
+        
+    
+    </div>
+    
+    <script src="script_1.js" async></script>
+</body>
+</html>

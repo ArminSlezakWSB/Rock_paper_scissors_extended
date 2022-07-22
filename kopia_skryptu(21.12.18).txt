@@ -1,0 +1,139 @@
+// do bitwy mozerz wybrac 3 spelle
+/*
+SPELLE:
+    * ogien
+    * lód 
+    * natura
+    * wiatr (?)
+    
+    ^^ tarcza - 80 many moze odbic spell przeciwnika lub unieszkodliwic (szansa na to)
+    ^^ dodanie zycia - 50 many
+    
+    ^^ 3 spell specjalny - za 70 many w swojej lepszej wersji (?)
+*/
+// Co ture odnowa np 10 many
+
+
+// Main_List =====[Name,Picture,IsAvaible,ManaCost,LiveCost]
+var SpellsList = [["Flame", "flame_2.png", true, 20, 80],
+                  ["Freeze", "freeze.png", true, 20, 80],
+                  ["Nature", "nature(n).webp", true, 20, 80],
+                  ["Wind", "wind.png", true, 20, 80],
+                  ["Thunder", "thunder.png", true, 20, 80]];
+
+//alert(SpellsList[0][0]);
+//moze lepiej bedzie brac dane z takiej tabeli
+
+
+var spell_icons = ["flame_2.png", "freeze.png", "nature(n).webp", "wind.png", "thunder.png"];
+var Spell = ["Flame", "Freeze", "Nature", "Wind", "Thunder"];
+var avaibleSpells = [true, true, true, true, true];
+var spellClear = [false, false, false];
+var Spells = document.getElementsByClassName("spellCheckList");
+for(let i=0; i<=4; i++)
+    {
+        Spells[i].classList.add("avaibleSpells");
+    }
+var YourSpells = new Array(3);
+var YourSpellsList = new Array(3);
+var EnemySpellsList = new Array(3);
+
+var confirmButton;
+var audioInfo;
+
+function CheckYourSpells(nr)
+{
+    document.getElementById("spell"+nr).onclick = function()
+    {
+        if(avaibleSpells[nr-1] == true)
+            {
+                
+                if(spellClear[0] == false || spellClear[1] == false || spellClear[2] == false)
+                    {
+                        avaibleSpells[nr-1] = false;
+                        Spells[nr-1].classList.add("unavaibleSpells");
+                    }
+                //console.log(nr);
+                for(let i =1; i<=3; i++)
+                {
+                    if(spellClear[i-1] == false)
+                        {
+                            console.log(i);
+                            YourSpells[i-1] = Spell[nr-1];
+                            document.getElementById("p"+i).innerHTML = '<img id="pi'+i+'" title="'+YourSpells[i-1]+'" width="150" height="150"   src="img/spelle/'+spell_icons[nr-1]+'" alt="'+spell_icons[nr-1]+'"><div class="deleteSpell" id="deleteSpell"></div>';
+                            spellClear[i-1] = true;
+                            
+    // ***************************************************************************************************
+    // *******************************************DELETE-SPELLS*******************************************
+    // ***************************************************************************************************
+                            
+                            var deleteButton = document.getElementsByClassName("deleteSpell");
+    
+                            deleteButton[i-1].onclick = function()
+                            {
+                                YourSpells[i-1] = " ";
+                                document.getElementById("p"+i).innerHTML = "";
+                                spellClear[i-1] = false;
+                                avaibleSpells[nr-1] = true;
+                                Spells[nr-1].classList.remove("unavaibleSpells");
+                                Spells[nr-1].classList.add("avaibleSpells");
+                                document.getElementById("confirmButton").removeAttribute("class", "confirm");
+                                document.getElementById("confirmButton").setAttribute("class", "unconfirm");
+                            }
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^DELETE-SPELLS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            break;
+                        }
+                }
+                
+    // ***************************************************************************************************
+    // ******************************************TRANSFER-SPELLS******************************************
+    // ***************************************************************************************************
+                if(spellClear[0] == true && spellClear[1] == true && spellClear[2] == true)
+                    {
+                        confirmButton = document.getElementById("confirmButton");
+                        confirmButton.setAttribute("class", "confirm");
+                        confirmButton.onclick = function()
+                        {
+                            for(let i = 1; i<=3; i++)
+                                {
+                                    document.getElementsByClassName("spell")[i-1].innerHTML = '<img title="'+YourSpells[i-1]+'" width="50" height="50"   src="'+document.getElementById("pi"+i).getAttribute('src')+'" alt="'+document.getElementById("pi"+i).getAttribute('alt')+'">';
+                                    window.scrollTo(0, window.innerHeight-document.getElementById("plan2").getAttribute("height"));
+                                }
+                        } 
+                    }
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^TRANSFER-SPELLS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+            }else{
+                console.log("unavaibleSpells");
+            }
+    }
+}
+
+CheckYourSpells(1);
+CheckYourSpells(2);
+CheckYourSpells(3);
+CheckYourSpells(4);
+CheckYourSpells(5);
+
+var Click_me = true;
+
+document.getElementById("myself").onmouseover = function()
+{
+    if(Click_me == true)
+        {
+            audioInfo = new Audio;
+                    if(document.getElementById("html").getAttribute("lang") == "pl")
+                        {
+                            audioInfo.src = "audio/info_pl.mp3";
+                        }else if(document.getElementById("html").getAttribute("lang") == "en")
+                            {
+                                audioInfo.src = "audio/info_en.mp3";
+                            }
+                    audioInfo.play();
+            Click_me = false;
+        }
+                    
+}
